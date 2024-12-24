@@ -9,6 +9,7 @@ sudo apt-get install -y \
     fluid-soundfont-gm \
     fluid-soundfont-gs \
     fluidsynth \
+    git \
     grep \
     neovim \
     rsync \
