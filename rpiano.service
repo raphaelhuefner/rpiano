@@ -1,0 +1,20 @@
+# Copy this to /home/raphael/.config/systemd/user/rpiano.service
+
+[Unit]
+Description=Let Fluidsynth process live events from a USB MIDI device
+
+[Service]
+Type=forking
+ExecStart=/home/raphael/projects/rpiano/run.sh
+Restart=on-failure
+# ExecStart=/home/raphael/projects/rpiano/fluid-sees-events.sh
+# ExecStop=/usr/local/bin/nzbget -Q
+
+User=raphael
+Group=raphael
+SupplementaryGroups=audio
+
+[Install]
+# WantedBy=multi-user.target
+WantedBy=default.target
+
