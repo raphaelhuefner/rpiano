@@ -2,15 +2,11 @@
 Description=Let Fluidsynth process live events from a USB MIDI device
 
 [Service]
-Environment=PATH=/usr/bin:/sbin:/usr/sbin:/home/raphael/bin:/usr/local/bin:/bin
+Environment=PATH=/home/raphael/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 Type=forking
 ExecStart=/home/raphael/projects/rpiano/run.sh
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
-
-User=raphael
-Group=raphael
-SupplementaryGroups=audio
 
 TimeoutSec=0
 RestartSec=2

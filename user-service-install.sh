@@ -7,3 +7,9 @@ mkdir -p $USER_SYSTEMD_DIR
 cp ./rpiano.service $USER_SYSTEMD_DIR/rpiano.service
 
 loginctl enable-linger $USERNAME
+
+systemctl --user daemon-reload
+
+systemctl --user enable rpiano
+
+systemctl --user start rpiano
