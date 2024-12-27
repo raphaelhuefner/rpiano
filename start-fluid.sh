@@ -9,4 +9,18 @@
 # fluidsynth -C0 -R0 -r22050 -c2 -z512 -l -a alsa -o audio.alsa.device=plughw:0 -o synth.polyphony=32 -m alsa_raw -o midi.alsa.device=hw:1,0,0 -g 1.0 /usr/share/sounds/sf2/default-GM.sf2
 
 # WORKS!!!!
-fluidsynth -C0 -R0 -r22050 -c2 -z512 -l -a alsa -o audio.alsa.device=plughw:0 -o synth.polyphony=32 -m alsa_raw -o midi.alsa.device=hw:1,0,0 -g 1.0 /home/raphael/soundfonts/U20PIANO.SF2
+fluidsynth \
+    --chorus=0 \
+    --reverb=0 \
+    --gain=1.0 \
+    --sample-rate=22050 \
+    --audio-bufcount=2 \
+    --audio-bufsize=512 \
+    --no-shell \
+    --server \
+    --audio-driver=alsa \
+    --midi-driver=alsa_raw \
+    -o audio.alsa.device=plughw:0 \
+    -o synth.polyphony=32 \
+    -o midi.alsa.device=hw:1,0,0 \
+    /home/raphael/soundfonts/U20PIANO.SF2

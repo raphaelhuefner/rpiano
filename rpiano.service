@@ -7,8 +7,6 @@ Description=Let Fluidsynth process live events from a USB MIDI device
 Type=forking
 ExecStart=/home/raphael/projects/rpiano/run.sh
 Restart=on-failure
-# ExecStart=/home/raphael/projects/rpiano/fluid-sees-events.sh
-# ExecStop=/usr/local/bin/nzbget -Q
 
 User=raphael
 Group=raphael
