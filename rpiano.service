@@ -3,6 +3,15 @@ Description=Let Fluidsynth process live events from a USB MIDI device
 After=sound.target
 # After=pipewire.service
 
+# ConditionPathExistsGlob=/dev/snd/control*
+
+# ConditionPathExists=/dev/snd/controlC0
+# ConditionPathExists=/dev/snd/controlC1
+# ConditionPathExists=/dev/snd/midiC1D0
+# ConditionPathExists=/dev/snd/pcmC0D0p
+
+After=alsa-restore.service
+
 [Service]
 Type=exec
 
@@ -26,5 +35,6 @@ EnvironmentFile=-%h/projects/rpiano/.env
 
 
 [Install]
-WantedBy=default.target
+#WantedBy=default.target
 # WantedBy=multi-user.target
+WantedBy=sound.target
