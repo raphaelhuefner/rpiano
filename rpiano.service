@@ -1,10 +1,17 @@
 [Unit]
 Description=Let Fluidsynth process live events from a USB MIDI device
+After=sound.target
+# After=pipewire.service
 
 [Service]
-Environment=PATH=/home/raphael/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-Type=forking
-ExecStart=/home/raphael/projects/rpiano/run.sh
+Type=exec
+
+# The PID file is optional, but recommended in the manpage
+# "so that systemd can identify the main process of the daemon"
+PIDFile=/var/run/rpiano.pid
+
+Environment=PATH=%h/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ExecStart=%h/projects/rpiano/run.sh
 ExecReload=/bin/kill -s HUP $MAINPID
 Restart=always
 
@@ -14,11 +21,10 @@ StartLimitBurst=3
 StartLimitInterval=60s
 LimitMEMLOCK=infinity
 LimitRTPRIO=90
-TasksMax=infinity
-Delegate=yes
-Type=notify
-NotifyAccess=all
-KillMode=mixed
+
+EnvironmentFile=-%h/projects/rpiano/.env
+
 
 [Install]
 WantedBy=default.target
+# WantedBy=multi-user.target
